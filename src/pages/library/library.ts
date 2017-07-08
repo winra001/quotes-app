@@ -11,6 +11,8 @@ import quotes from '../../data/quotes';
 })
 export class LibraryPage implements OnInit {
 
+  quotesPage = 'QuotesPage';
+
   quoteCollection: {
     category: string,
     quotes: Quote[],
