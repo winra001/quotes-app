@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, NavParams } from 'ionic-angular';
 
 import { Quote } from "../../data/quote.interface";
 
@@ -16,7 +16,7 @@ export class QuotesPage implements OnInit {
     icon: string
   };
 
-  constructor(private navParams: NavParams) {
+  constructor(private navParams: NavParams, private alertCtrl: AlertController) {
   }
 
   // ngOnInit() is executed before the page is rendered
@@ -28,5 +28,30 @@ export class QuotesPage implements OnInit {
   //   this.quoteGroup = this.navParams.data;
   // Add elvis operator (?) in template to use this approach
   // }
+
+  onAddToFavorite(selectedQuote: Quote) {
+    const alert = this.alertCtrl.create({
+      title: 'Add Quote',
+      subTitle: 'Are you sure?',
+      message: 'Are you sure you want to add the quote?',
+      buttons: [
+        {
+          text: 'Yes, go ahead',
+          handler: () => {
+            console.log('Ok');
+          }
+        },
+        {
+          text: 'No, I changed my mind',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancelled');
+          }
+        }
+      ]
+    });
+
+    alert.present();
+  }
 
 }
