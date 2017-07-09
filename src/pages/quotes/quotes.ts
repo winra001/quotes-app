@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, IonicPage, NavParams } from 'ionic-angular';
 
 import { Quote } from "../../data/quote.interface";
+import { QuoteService } from "../../services/quote.service";
 
 @IonicPage()
 @Component({
@@ -16,7 +17,7 @@ export class QuotesPage implements OnInit {
     icon: string
   };
 
-  constructor(private navParams: NavParams, private alertCtrl: AlertController) {
+  constructor(private navParams: NavParams, private alertCtrl: AlertController, private quoteService: QuoteService) {
   }
 
   // ngOnInit() is executed before the page is rendered
@@ -38,7 +39,7 @@ export class QuotesPage implements OnInit {
         {
           text: 'Yes, go ahead',
           handler: () => {
-            console.log('Ok');
+            this.quoteService.addQuoteToFavorites(selectedQuote);
           }
         },
         {
