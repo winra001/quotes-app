@@ -28,6 +28,11 @@ export class FavoritesPage {
     modal.onDidDismiss((remove: boolean) => {
       if (remove) {
         this.quoteService.removeQuoteFromFavorites(quote);
+        // this.quotes = this.quoteService.getFavoriteQuotes();
+        const position = this.quotes.findIndex((quoteEl: Quote) => {
+          return quoteEl.id == quote.id;
+        });
+        this.quotes.splice(position, 1);
       }
     });
   }
