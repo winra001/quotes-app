@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, Toggle } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -8,11 +8,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SettingsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage');
+  onToggle(toggle: Toggle) {
+    console.log(toggle);
   }
 
 }
